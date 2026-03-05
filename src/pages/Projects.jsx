@@ -12,13 +12,13 @@ const projects = [
   {
     title: 'Weather App',
     description: 'Search a city and view current weather instantly.',
-    image: `${base}/images/weather-app.jpeg`,
+    image: `${base}images/weather-app.jpeg`,
     link: '/projects/weather',
   },
   {
     title: 'Calculator',
     description: 'Minimalist calculator with keyboard support.',
-    image: `${base}/images/calculator.jpeg`,
+    image: `${base}images/calculator.jpeg`,
     link: '/projects/calculator',
   },
 ]
