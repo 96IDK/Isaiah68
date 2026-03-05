@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { HashRouter, Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -36,7 +36,7 @@ function App() {
   )
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="page">
         <header className="header header-centered">
           <div className="header-copy">
@@ -74,7 +74,7 @@ function App() {
         </main>
 
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
