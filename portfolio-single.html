@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #0f1115;
+        --surface: #171a21;
+        --text: #f6f7fb;
+        --muted: #b7bcc9;
+        --accent: #8b7cff;
+        --accent-soft: rgba(139, 124, 255, 0.18);
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      :root[data-theme='light'] {
+        --bg: #f7f7fb;
+        --surface: #ffffff;
+        --text: #12141a;
+        --muted: #5f6678;
+        --accent: #5b53ff;
+        --accent-soft: rgba(91, 83, 255, 0.12);
+        --border: rgba(18, 20, 26, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 24px 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 32px;
+        background: var(--surface);
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+
+      .title {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        max-width: 520px;
+      }
+
+      .toggle {
+        background: var(--accent-soft);
+        border: 1px solid transparent;
+        color: var(--text);
+        padding: 10px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .toggle:hover {
+        border-color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+
+      .section p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+      }
+
+      .image-wrap {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .card-body h3 {
+        font-size: 20px;
+      }
+
+      .code {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        font-size: 12px;
+        white-space: pre-wrap;
+        color: var(--text);
+      }
+
+      :root[data-theme='light'] .code {
+        background: rgba(91, 83, 255, 0.08);
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .pill {
+        border: 1px solid var(--border);
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--surface);
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .footer {
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div>
+          <p class="kicker">Portfolio</p>
+          <h1 class="title">Showcasing my skills</h1>
+          <p class="subtitle">
+            Minimalist, playful, and focused on what matters: clean UI and solid code.
+          </p>
+        </div>
+        <button class="toggle" id="themeToggle" aria-label="Switch theme">🌙 Dark</button>
+      </header>
+
+      <section id="about" class="section">
+        <h2>About</h2>
+        <p>
+          I build small, sharp experiences that feel good to use. If you want your product to be
+          clean, fast, and fun, we’ll get along.
+        </p>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p>Three small builds that show how I think and ship.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="image-wrap">
+              <img src="images/tic-tac-toe.jpg" alt="Tic Tac Toe" />
+            </div>
+            <div class="card-body">
+              <h3>Tic Tac Toe</h3>
+              <p>
+                A clean, responsive Tic Tac Toe game with a focus on smooth interactions and simple logic.
+              </p>
+              <pre class="code"><code>// Tic Tac Toe (excerpt)
+const winningLines = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
+];
+
+function calculateWinner(squares) {
+  for (const [a,b,c] of winningLines) {
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
+// Docs: Simple 3x3 grid game. Click a square to place X/O.
+// First to align three wins. Includes reset button and status text.</code></pre>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="image-wrap">
+              <img src="images/weather-app.jpg" alt="Weather App" />
+            </div>
+            <div class="card-body">
+              <h3>Weather App</h3>
+              <p>
+                A lightweight weather dashboard with quick city search and clean, readable forecasts.
+              </p>
+              <pre class="code"><code>// Weather App (excerpt)
+async function getWeather(city) {
+  const res = await fetch(
+    `https://api.open-meteo.com/v1/forecast?current=temperature_2m&latitude=...&longitude=...`
+  );
+  return res.json();
+}
+
+// Docs: Search a city, fetch current temperature, and display it
+// with friendly formatting and units.</code></pre>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="image-wrap">
+              <img src="images/calculator.jpg" alt="Calculator" />
+            </div>
+            <div class="card-body">
+              <h3>Calculator</h3>
+              <p>
+                A minimalist calculator with keyboard input support and crisp button feedback.
+              </p>
+              <pre class="code"><code>// Calculator (excerpt)
+const operators = ['+', '-', '×', '÷'];
+
+function evaluate(expr) {
+  // basic parser for + - * /
+  return Function("use strict"; return (${expr}))();
+}
+
+// Docs: Click buttons or type to build an expression, then evaluate.
+// Includes clear and delete actions.</code></pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Drop your email and socials here. I’ll plug them in once you send them.</p>
+        <div class="contact-row">
+          <span class="pill">email@example.com</span>
+          <span class="pill">@yourhandle</span>
+          <span class="pill">linkedin.com/in/you</span>
+        </div>
+      </section>
+
+      <footer class="footer">Built with HTML/CSS · Dark mode ready</footer>
+    </div>
+
+    <script>
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme') || 'dark';
+      root.setAttribute('data-theme', saved);
+      toggle.textContent = saved === 'dark' ? '🌙 Dark' : '☀️ Light';
+
+      toggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.textContent = next === 'dark' ? '🌙 Dark' : '☀️ Light';
+      });
+    </script>
+  </body>
+</html>
