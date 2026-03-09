@@ -573,23 +573,24 @@ body.theme-flash::after {
   font-size: 13px;
 }
 
-.about-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.typing-paragraph {
   min-height: 260px;
 }
 
-.about-line {
-  margin: 0;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+.typing-cursor {
+  border-right: 2px solid var(--accent);
+  padding-right: 2px;
+  animation: blink 0.8s step-end infinite;
 }
 
-.about-line.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--accent);
+  }
 }
 
 @keyframes lampGlow {
