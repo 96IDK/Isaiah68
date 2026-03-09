@@ -12,7 +12,7 @@ export default function About() {
 
     const fullText = `${ABOUT_TEXT} ${'Let’s build something that matters.'}`
     let i = 0
-    const speed = 133
+    const speed = 86
 
     const tick = () => {
       if (i <= fullText.length) {
