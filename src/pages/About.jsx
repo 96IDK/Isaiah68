@@ -1,28 +1,29 @@
 import { useEffect, useState } from 'react'
 import mePhoto from '../assets/me.jpeg'
 
-const ABOUT_TEXT =
-  'I am a self-motivated Help Desk Technician and Developer with a passion for bridging the gap between complex technical systems and seamless user experiences. With a solid foundation in Computer Science from Valdosta State University and a CompTIA A+ certification, I have cultivated a diverse skill set ranging from hands-on PC hardware optimization honed through building custom gaming rigs and Plex home labs to providing enterprise-level support for organizations like GE and the University of Georgia. My expertise spans cross-platform troubleshooting in Windows and macOS, asset management via ServiceNow, and a growing proficiency in full-stack development languages including SQL, Java, and JavaScript. I am driven by the belief that technology should be a tool for positive impact, and I am committed to delivering proactive, secure, and efficient technical solutions in every project I undertake.'
+const ABOUT_LINES = [
+  'I am a self-motivated Help Desk Technician and Developer with a passion for bridging the gap between complex technical systems and seamless user experiences.',
+  'With a solid foundation in Computer Science from Valdosta State University and a CompTIA A+ certification, I have cultivated a diverse skill set ranging from hands-on PC hardware optimization honed through building custom gaming rigs and Plex home labs to providing enterprise-level support for organizations like GE and the University of Georgia.',
+  'My expertise spans cross-platform troubleshooting in Windows and macOS, asset management via ServiceNow, and a growing proficiency in full-stack development languages including SQL, Java, and JavaScript.',
+  'I am driven by the belief that technology should be a tool for positive impact, and I am committed to delivering proactive, secure, and efficient technical solutions in every project I undertake.',
+  'Let’s build something that matters.'
+]
 
 export default function About() {
-  const [typedAbout, setTypedAbout] = useState('')
+  const [visibleLines, setVisibleLines] = useState(0)
 
   useEffect(() => {
-    setTypedAbout('')
-
-    const fullText = `${ABOUT_TEXT} ${'Let’s build something that matters.'}`
-    let i = 0
-    const speed = 25
-
-    const tick = () => {
-      if (i <= fullText.length) {
-        setTypedAbout(fullText.slice(0, i))
-        i += 1
-        setTimeout(tick, speed)
+    setVisibleLines(0)
+    let index = 0
+    const interval = setInterval(() => {
+      index += 1
+      setVisibleLines(index)
+      if (index >= ABOUT_LINES.length) {
+        clearInterval(interval)
       }
-    }
+    }, 300)
 
-    tick()
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -37,9 +38,16 @@ export default function About() {
         </div>
 
         <div className="about-copy">
-          <p className="typing-paragraph">
-            <span className="typing-cursor">{typedAbout}</span>
-          </p>
+          <div className="about-lines">
+            {ABOUT_LINES.map((line, index) => (
+              <p
+                key={line}
+                className={`about-line ${index < visibleLines ? 'visible' : ''}`}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
 
           <div className="callout">
             <strong>Focus areas:</strong>
