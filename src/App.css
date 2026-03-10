@@ -487,6 +487,11 @@ body.theme-flash::after {
   z-index: 1;
 }
 
+.contact-card.stack-four {
+  transform: translateY(-54px) rotate(2deg);
+  z-index: 0;
+}
+
 :root[data-theme='light'] .contact-card {
   background: var(--bg);
 }
