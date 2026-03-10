@@ -1151,14 +1151,27 @@ body.theme-flash::after {
     align-items: flex-start;
   }
 
+  .header-centered {
+    align-items: center;
+    text-align: center;
+  }
+
   .header-actions {
     align-items: flex-start;
     width: 100%;
   }
 
+  .header-centered .header-actions {
+    align-items: center;
+  }
+
   .nav {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .header-centered .nav {
+    justify-content: center;
   }
 
   .game {
@@ -1185,6 +1198,11 @@ body.theme-flash::after {
 @media (max-width: 600px) {
   .header {
     padding: 24px;
+  }
+
+  .subtitle {
+    white-space: normal;
+    max-width: 100%;
   }
 
   .nav {
