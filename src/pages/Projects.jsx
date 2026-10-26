@@ -4,6 +4,15 @@ const base = import.meta.env.BASE_URL;
 
 const projects = [
   {
+    // Featured: real production work (case study page, no live demo)
+    title: 'IPPE Placement App',
+    description: 'Flask app in production at UGA Pharmacy that matches ~150 students to rotation sites by real drive time.',
+    image: `${base}images/ippe-card.jpeg`,
+    link: '/projects/ippe-placement',
+    badge: 'In production',
+    cta: 'Case study',
+  },
+  {
     title: 'Tic Tac Toe',
     description: 'Play the classic game with clean logic and smooth UI.',
     image: `${base}images/tic-tac-toe.jpeg`,
@@ -28,19 +37,21 @@ export default function Projects() {
     <section className="section">
       <div className="section-head projects-head">
         <h2>Projects</h2>
-        <p>Click a project to try it live.</p>
+        <p>Real work I’ve shipped, plus smaller projects you can try live.</p>
       </div>
       <div className="grid">
         {projects.map((project) => (
           <article key={project.title} className="card">
             <div className="image-wrap">
               <img src={project.image} alt={project.title} />
+              {/* Optional corner badge, e.g. "In production" */}
+              {project.badge && <span className="card-badge">{project.badge}</span>}
             </div>
             <div className="card-body">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <Link className="button" to={project.link}>
-                Open
+                {project.cta || 'Open'}
               </Link>
             </div>
           </article>

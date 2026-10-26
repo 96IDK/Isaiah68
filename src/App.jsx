@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import TicTacToe from './pages/TicTacToe'
 import Weather from './pages/Weather'
 import Calculator from './pages/Calculator'
+import IppePlacement from './pages/IppePlacement'
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -70,6 +71,7 @@ function App() {
             <Route path="/projects/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/projects/weather" element={<Weather />} />
             <Route path="/projects/calculator" element={<Calculator />} />
+            <Route path="/projects/ippe-placement" element={<IppePlacement />} />
           </Routes>
         </main>
 
